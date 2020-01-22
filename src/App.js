@@ -60,9 +60,7 @@ const App = () => {
 					<input
 						type="text"
 						value={totalBill}
-						onChange={e => {
-							setTotalBill(e.target.value);
-						}}
+						onChange={e => setTotalBill(e.target.value)}
 					/>
 				</label>
 				<br />
@@ -76,8 +74,16 @@ const App = () => {
 					</select>
 				</label>
 			</form>
-			<h2>{`Your KWPH are ${kwPh.toFixed(2)}`}</h2>
-			<h2>{`You could save $${savings.toFixed(2)} per ${billingPeriod} days`}</h2>
+			{savings && kwPh < 0 ? (
+				<h2>Please Enter A Valid Input</h2>
+			) : (
+				<>
+					<h2>{`Your KWPH are ${kwPh.toFixed(2)}`}</h2>
+					<h2>{`You could save $${savings.toFixed(
+						2
+					)} per ${billingPeriod} days`}</h2>
+				</>
+			)}
 		</div>
 	);
 };
